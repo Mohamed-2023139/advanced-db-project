@@ -1,0 +1,83 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Ride System EERD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1">
+       <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Users -->
+        <mxCell id="users" value="Users&#xa;PK user_id&#xa;name&#xa;email&#xa;phone" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="180" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- RideRequests -->
+        <mxCell id="requests" value="RideRequests&#xa;PK request_id&#xa;FK user_id&#xa;FK pickup_location_id&#xa;FK dropoff_location_id" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="220" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Trips -->
+        <mxCell id="trips" value="Trips&#xa;PK trip_id&#xa;FK request_id&#xa;FK driver_id&#xa;FK vehicle_id" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="100" width="220" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- Drivers -->
+        <mxCell id="drivers" value="Drivers&#xa;PK driver_id&#xa;name&#xa;status" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="300" width="180" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Vehicles -->
+        <mxCell id="vehicles" value="Vehicles&#xa;PK vehicle_id&#xa;FK driver_id&#xa;plate_number" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="300" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Payments -->
+        <mxCell id="payments" value="Payments&#xa;PK payment_id&#xa;FK trip_id&#xa;amount" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="200" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Locations -->
+        <mxCell id="locations" value="Locations&#xa;PK location_id&#xa;lat&#xa;lng" style="shape=rectangle;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+
+        <!-- Users → RideRequests -->
+        <mxCell id="e1" value="1:M" style="endArrow=block;" edge="1" parent="1" source="users" target="requests">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RideRequests → Trips -->
+        <mxCell id="e2" value="1:1" style="endArrow=block;" edge="1" parent="1" source="requests" target="trips">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Trips → Payments -->
+        <mxCell id="e3" value="1:1" style="endArrow=block;" edge="1" parent="1" source="trips" target="payments">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Drivers → Trips -->
+        <mxCell id="e4" value="1:M" style="endArrow=block;" edge="1" parent="1" source="drivers" target="trips">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Vehicles → Trips -->
+        <mxCell id="e5" value="1:M" style="endArrow=block;" edge="1" parent="1" source="vehicles" target="trips">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Drivers → Vehicles -->
+        <mxCell id="e6" value="1:M" style="endArrow=block;" edge="1" parent="1" source="drivers" target="vehicles">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Locations → RideRequests -->
+        <mxCell id="e7" value="1:M" style="endArrow=block;" edge="1" parent="1" source="locations" target="requests">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
